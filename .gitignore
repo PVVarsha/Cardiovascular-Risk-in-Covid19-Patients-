@@ -1,0 +1,33 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# Virtual Environments
+venv/
+env/
+.venv/
+.env/
+
+# Databases
+*.sqlite3
+*.sqlite3-journal
+
+# Large Model Files
+# GitHub has a hard limit of 100MB per file. 
+# MANUAL.h5 (120MB) exceeds this limit and cannot be uploaded directly.
+# LENET.h5 (14.6MB) is also ignored here to keep the repo clean.
+*.h5
+
+# Large Datasets
+# The image dataset is very large and should be hosted separately (e.g., Google Drive/Kaggle).
+**/DATASET/
+
+# Local media/uploaded files
+**/media/
+**/profile_images/
+*.log

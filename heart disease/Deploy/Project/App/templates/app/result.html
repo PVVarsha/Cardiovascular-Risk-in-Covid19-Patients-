@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ predict | upper }} Prediction</title>
+    
+<style>
+/* General Body Styling */
+body {
+    font-family: 'Open Sans', Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* Card Styling */
+.card {
+    margin-top: 50px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background-color: rgb(240, 29, 29);
+    text-align: center;
+}
+
+.card img {
+    max-width: 300px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Base Section Styling */
+.section {
+    padding: 20px;
+    background-color: white;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.section:hover {
+    transform: translateY(-5px);
+}
+
+h2 {
+    font-weight: bold;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+ul li {
+    margin-bottom: 8px;
+}
+
+/* Exercise and Dietary Recommendations Styling */
+.exercise {
+    margin-top: 20px;
+}
+
+h3 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Button Hover Effect */
+button.navbar-toggler {
+    border-color: #007bff;
+}
+
+button.navbar-toggler:hover {
+    background-color: #007bff;
+}
+
+/* UNIQUE STYLES FOR EACH PREDICTION CATEGORY */
+
+/* Abnormal Heart Beats */
+#Abnormal-Heart-Beats {
+    background: linear-gradient(to bottom right, #f0f8ff, #e6f7ff);
+    border-left: 5px solid #4a90e2;
+}
+
+#Abnormal-Heart-Beats h2 {
+    color: #2c5aa0;
+    border-bottom-color: #4a90e2;
+}
+
+#Abnormal-Heart-Beats h3 {
+    color: #2c5aa0;
+}
+
+#Abnormal-Heart-Beats .table th {
+    background-color: #4a90e2;
+    color: white;
+}
+
+#Abnormal-Heart-Beats .table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(74, 144, 226, 0.1);
+}
+
+/* Cardiomyopathy */
+#Cardiomyopathy {
+    background: linear-gradient(to bottom right, #fff0f0, #ffe6e6);
+    border-left: 5px solid #e74c3c;
+}
+
+#Cardiomyopathy h2 {
+    color: #c0392b;
+    border-bottom-color: #e74c3c;
+}
+
+#Cardiomyopathy h3 {
+    color: #c0392b;
+}
+
+#Cardiomyopathy .table th {
+    background-color: #e74c3c;
+    color: white;
+}
+
+#Cardiomyopathy .table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(231, 76, 60, 0.1);
+}
+
+/* COVID-19 */
+#COVID-19 {
+    background: linear-gradient(to bottom right, #f0fff0, #e6ffe6);
+    border-left: 5px solid #27ae60;
+}
+
+#COVID-19 h2 {
+    color: #1e8449;
+    border-bottom-color: #27ae60;
+}
+
+#COVID-19 h3 {
+    color: #1e8449;
+}
+
+#COVID-19 .table th {
+    background-color: #27ae60;
+    color: white;
+}
+
+#COVID-19 .table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(39, 174, 96, 0.1);
+}
+
+/* Myocardial Infarction */
+#Myocardial-Infarction {
+    background: linear-gradient(to bottom right, #fff8f0, #fff2e6);
+    border-left: 5px solid #48906c;
+}
+
+#Myocardial-Infarction h2 {
+    color: #7cd2a7;
+    border-bottom-color: #7cd2a7;
+}
+
+#Myocardial-Infarction h3 {
+    color: #7cd2a7;
+}
+
+#Myocardial-Infarction .table th {
+    background-color: #21975c;
+    color: white;
+}
+
+#Myocardial-Infarction .table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(230, 126, 34, 0.1);
+}
+
+/* Normal */
+#Normal {
+    background: linear-gradient(to bottom right, #f8f8f8, #f0f0f0);
+    border-left: 5px solid #7f8c8d;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+#Normal h2 {
+    color: #2c3e50;
+    border-bottom: none;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+#Normal p {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    margin-bottom: 30px;
+}
+
+#Normal .normal-icon {
+    font-size: 4rem;
+    color: #27ae60;
+    margin-bottom: 20px;
+}
+
+/* Mobile Media Queries */
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .nav-link {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .section {
+        padding: 15px;
+    }
+}
+
+</style>
+<link href="/static/css/bootstrap.min.css" rel="stylesheet">
+<link href="/static/css/bootstrap-icons.css" rel="stylesheet">
+<link href="/static/css/templatemo-kind-heart-charity.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light shadow-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="/static/images/logo.png" class="logo img-fluid" alt="Kind Heart Charity">
+                <span>
+                    AI CARDIOLOGIST 
+                    <small>using ml & dl</small>
+                </span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="/">Home</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                       <a class="nav-link" href="{% url 'users-profile' %}">Profile </a>
+                   </li>
+                   <li class="nav-item">
+                    <a class="nav-link" href="{% url 'Deploy_9' %}">ML MODEL</a>
+                    </li>
+
+                    <li class="nav-item">
+                       <a class="nav-link" href="{% url 'Deploy_10' %}">DL MODEL</a>
+                   </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link click-scroll dropdown-toggle" href="#section_5" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Report</a>
+
+                        <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                            <li><a class="dropdown-item" href="{% url 'report' %}">Basic report </a></li>
+
+                            <li><a class="dropdown-item" href="{% url 'matrix' %}">Metrix report</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                       <a class="nav-link click-scroll dropdown-toggle" href="" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Database</a>
+
+                       <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                           <li><a class="dropdown-item" href="{% url 'patient_list' %}">ML DB </a></li>
+
+                           <li><a class="dropdown-item" href="{% url 'database' %}">DL DB</a></li>
+                       </ul>
+                   </li>
+
+                    <li class="nav-item ms-3">
+                        <a class="nav-link custom-btn custom-border-btn btn" href="{% url 'logout_view' %}">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item ms-3">
+                       <a class="nav-link custom-btn custom-border-btn btn" href="{% url 'login' %}">LogIN</a>
+                   </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <br>
+    <br><br><br>
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-content">
+                <img src="{{ obj.image.url }}" alt="Input Images" class="mb-4">
+                <p style="color: #7cd2a7;" class="card-title">{{ predict | upper }}</p>
+            </div>
+        </div>
+    </div>
+    
+    {% if obj %}
+        <!-- Abnormal Heart Beats Section -->
+        {% if predict == 'Abnormal heart beats' %}
+            <div id="Abnormal-Heart-Beats" class="section">
+                <h2>Abnormal Heart Beats</h2>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Category</th>
+                        <th>Details</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Description</strong></td>
+                        <td>Abnormal heart beats, or arrhythmias, occur when the electrical impulses that coordinate your heartbeats don't work properly, causing your heart to beat too fast, too slow, or irregularly.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Symptoms</strong></td>
+                        <td>
+                            <ul>
+                                <li>Fluttering in your chest</li>
+                                <li>Racing heartbeat (tachycardia)</li>
+                                <li>Slow heartbeat (bradycardia)</li>
+                                <li>Chest pain</li>
+                                <li>Shortness of breath</li>
+                                <li>Dizziness or lightheadedness</li>
+                                <li>Sweating</li>
+                                <li>Fainting (syncope) or near fainting</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Prevention and Precautions</strong></td>
+                        <td>
+                            <ul>
+                                <li>Eat a heart-healthy diet rich in fruits, vegetables, and whole grains</li>
+                                <li>Maintain a healthy weight</li>
+                                <li>Keep blood pressure and cholesterol levels under control</li>
+                                <li>Exercise regularly</li>
+                                <li>Limit alcohol and caffeine intake</li>
+                                <li>Don't smoke</li>
+                                <li>Manage stress through relaxation techniques</li>
+                                <li>Get regular check-ups</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dietary Recommendations</strong></td>
+                        <td>
+                            <ul>
+                                <li><strong>Morning:</strong> Oatmeal with berries and nuts, green tea</li>
+                                <li><strong>Noon:</strong> Grilled salmon with quinoa and steamed vegetables</li>
+                                <li><strong>Evening:</strong> Lean chicken or tofu with brown rice and leafy greens</li>
+                                <li><strong>Snacks:</strong> Fresh fruits, yogurt, or a handful of almonds</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Exercise Recommendations</strong></td>
+                        <td>
+                            <ul>
+                                <li>Walking, swimming, or cycling at a moderate pace</li>
+                                <li>Yoga and stretching exercises</li>
+                                <li>Breathing exercises and meditation</li>
+                                <li>Avoid high-intensity workouts without medical clearance</li>
+                                <li>Consult with your doctor before starting any new exercise program</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+    
+        <!-- Cardiomyopathy Section -->
+        {% elif predict == 'Cardiomyopathy' %}
+            <div id="Cardiomyopathy" class="section">
+                <h2>Cardiomyopathy</h2>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Category</th>
+                        <th>Details</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Description</strong></td>
+                        <td>Cardiomyopathy is a disease of the heart muscle that makes it harder for your heart to pump blood to the rest of your body. It can lead to heart failure if not properly managed.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Symptoms</strong></td>
+                        <td>
+                            <ul>
+                                <li>Breathlessness with exertion or even at rest</li>
+                                <li>Swelling of the legs, ankles, and feet</li>
+                                <li>Bloating of the abdomen due to fluid buildup</li>
+                                <li>Fatigue</li>
+                                <li>Irregular heartbeats that feel rapid, pounding, or fluttering</li>
+                                <li>Dizziness, lightheadedness, and fainting</li>
+                                <li>Chest pain, especially after physical exertion or heavy meals</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Prevention and Precautions</strong></td>
+                        <td>
+                            <ul>
+                                <li>Control high blood pressure, high cholesterol, and diabetes</li>
+                                <li>Eat a heart-healthy diet</li>
+                                <li>Exercise regularly but avoid strenuous activities</li>
+                                <li>Get enough sleep</li>
+                                <li>Reduce stress</li>
+                                <li>Avoid alcohol or drink in moderation</li>
+                                <li>Don't use illegal drugs, particularly cocaine or amphetamines</li>
+                                <li>Take medications as prescribed</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dietary Recommendations</strong></td>
+                        <td>
+                            <ul>
+                                <li><strong>Morning:</strong> Whole grain toast with avocado, herbal tea</li>
+                                <li><strong>Noon:</strong> Baked chicken with sweet potatoes and green beans</li>
+                                <li><strong>Evening:</strong> Lentil soup with whole grain bread</li>
+                                <li><strong>General:</strong> Low-sodium diet, limit fluid intake if recommended by doctor</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Exercise Recommendations</strong></td>
+                        <td>
+                            <ul>
+                                <li>Light to moderate activities like walking or stationary cycling</li>
+                                <li>Stretching and flexibility exercises</li>
+                                <li>Avoid heavy weight lifting and high-intensity interval training</li>
+                                <li>Follow a cardiac rehabilitation program if recommended</li>
+                                <li>Always warm up and cool down properly</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+    
+        <!-- COVID-19 Section -->
+        {% elif predict == 'COVID-19' %}
+            <div id="COVID-19" class="section">
+                <h2>COVID-19 Cardiac Implications</h2>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Category</th>
+                        <th>Details</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Description</strong></td>
+                        <td>COVID-19 can affect the heart and cardiovascular system, potentially causing inflammation of the heart muscle (myocarditis), heart rhythm abnormalities, and blood clotting issues.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Symptoms</strong></td>
+                        <td>
+                            <ul>
+                                <li>Chest pain or pressure</li>
+                                <li>Palpitations or irregular heartbeat</li>
+                                <li>Shortness of breath</li>
+                                <li>Fatigue that persists after recovery</li>
+                                <li>Swelling in legs or abdomen</li>
+                                <li>Dizziness or lightheadedness</li>
+                                <li>Fainting spells</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Prevention and Precautions</strong></td>
+                        <td>
+                            <ul>
+                                <li>Get vaccinated and boosted against COVID-19</li>
+                                <li>Practice good hygiene and wear masks in crowded places</li>
+                                <li>Monitor your heart rate and symptoms during recovery</li>
+                                <li>Gradually return to physical activity after infection</li>
+                                <li>Stay hydrated and maintain a balanced diet</li>
+                                <li>Get adequate rest during recovery</li>
+                                <li>Follow up with your healthcare provider regularly</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dietary Recommendations</strong></td>
+                        <td>
+                            <ul>
+                                <li><strong>Morning:</strong> Warm oatmeal with honey and sliced bananas</li>
+                                <li><strong>Noon:</strong> Chicken soup with vegetables and whole grain crackers</li>
+                                <li><strong>Evening:</strong> Baked fish with steamed vegetables and quinoa</li>
+                                <li><strong>Hydration:</strong> Plenty of water, herbal teas, and clear broths</li>
+                                <li><strong>Focus:</strong> Anti-inflammatory foods like turmeric, ginger, and garlic</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Exercise Recommendations</strong></td>
+                        <td>
+                            <ul>
+                                <li>Start with gentle activities like short walks</li>
+                                <li>Gradually increase duration and intensity as tolerated</li>
+                                <li>Breathing exercises to improve lung function</li>
+                                <li>Light stretching and yoga</li>
+                                <li>Stop immediately if you experience chest pain, dizziness, or severe shortness of breath</li>
+                                <li>Consult with your doctor before resuming pre-COVID exercise levels</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+    
+        <!-- Myocardial Infarction Section -->
+        {% elif predict == 'Myocardial Infarction' %}
+            <div id="Myocardial-Infarction" class="section">
+                <h2>Myocardial Infarction (Heart Attack)</h2>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Category</th>
+                        <th>Details</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Description</strong></td>
+                        <td>A myocardial infarction, commonly known as a heart attack, occurs when blood flow to a part of the heart is blocked for a long enough time that part of the heart muscle is damaged or dies.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Symptoms</strong></td>
+                        <td>
+                            <ul>
+                                <li>Chest pain or discomfort (pressure, squeezing, fullness)</li>
+                                <li>Pain or discomfort in one or both arms, back, neck, jaw, or stomach</li>
+                                <li>Shortness of breath</li>
+                                <li>Cold sweat</li>
+                                <li>Nausea or vomiting</li>
+                                <li>Lightheadedness or dizziness</li>
+                                <li>Unusual fatigue</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Prevention and Precautions</strong></td>
+                        <td>
+                            <ul>
+                                <li>Don't smoke and avoid secondhand smoke</li>
+                                <li>Control blood pressure, cholesterol, and diabetes</li>
+                                <li>Exercise regularly</li>
+                                <li>Maintain a healthy weight</li>
+                                <li>Eat a diet low in saturated fat, trans fat, and sodium</li>
+                                <li>Limit alcohol consumption</li>
+                                <li>Manage stress</li>
+                                <li>Take prescribed medications as directed</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dietary Recommendations</strong></td>
+                        <td>
+                            <ul>
+                                <li><strong>Morning:</strong> Whole grain cereal with low-fat milk and berries</li>
+                                <li><strong>Noon:</strong> Grilled chicken salad with olive oil dressing</li>
+                                <li><strong>Evening:</strong> Baked salmon with steamed vegetables and brown rice</li>
+                                <li><strong>General:</strong> Focus on fruits, vegetables, whole grains, lean proteins, and healthy fats</li>
+                                <li><strong>Avoid:</strong> Processed foods, sugary drinks, and excessive salt</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Exercise Recommendations</strong></td>
+                        <td>
+                            <ul>
+                                <li>Cardiac rehabilitation program under medical supervision</li>
+                                <li>Walking, stationary cycling, or swimming</li>
+                                <li>Gradual increase in activity level</li>
+                                <li>Strength training with light weights (after medical clearance)</li>
+                                <li>Avoid strenuous activities and heavy lifting initially</li>
+                                <li>Always warm up and cool down properly</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        <!-- Normal Section -->
+        {% elif predict == 'Normal' %}
+            <div id="Normal" class="section">
+                <div class="normal-icon">
+                    <i class="bi bi-heart-pulse"></i>
+                </div>
+                <h2>Normal ECG Reading</h2>
+                <p>Congratulations! Your ECG reading appears to be within normal parameters.</p>
+                <p>Continue maintaining a heart-healthy lifestyle with regular exercise, a balanced diet, and routine check-ups.</p>
+            </div>
+        {% endif %}
+    {% endif %}
+    
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/jquery.sticky.js"></script>
+    <script src="/static/js/click-scroll.js"></script>
+    <script src="/static/js/counter.js"></script>
+    <script src="/static/js/custom.js"></script>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Toggle Navbar Menu on Small Screens
+        const navbarToggler = document.querySelector('.navbar-toggler');
+        navbarToggler.addEventListener('click', function () {
+            const navbarMenu = document.querySelector('#navbarNav');
+            navbarMenu.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>

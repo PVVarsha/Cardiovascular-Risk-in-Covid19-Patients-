@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cardiology Prediction</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<style>
+		body {
+			background-image: url('https://img.freepik.com/free-photo/view-anatomic-heart-model-educational-purpose-with-stethoscope_23-2149894392.jpg');
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			font-family: 'Open Sans', Arial, sans-serif;
+		}
+
+		.container {
+			max-width: 1000px;
+			margin: 50px auto;
+			background-color: #f8f9fa;
+			border-radius: 10px;
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+			padding: 30px;
+		}
+
+		.login__form {
+			width: 100%;
+		}
+
+		.login__title {
+			text-align: center;
+			font-size: 24px;
+			color: #333;
+			margin-bottom: 20px;
+		}
+
+		.login__inputs {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 15px;
+			margin-bottom: 20px;
+		}
+
+		.login__label {
+			font-size: 14px;
+			font-weight: bold;
+			color: #333;
+		}
+
+		.login__input {
+			width: 100%;
+			padding: 10px;
+			font-size: 14px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			transition: border-color 0.3s ease;
+		}
+
+		.login__input:focus {
+			border-color: #007bff;
+			outline: none;
+		}
+
+		.login__button {
+			width: 100%;
+			padding: 12px;
+			background-color: #007bff;
+			color: white;
+			font-size: 16px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+		}
+
+		.login__button:hover {
+			background-color: #0056b3;
+		}
+
+		@media (min-width: 768px) {
+			.login__inputs {
+				grid-template-columns: 1fr 1fr;
+			}
+		}
+	</style>
+</head>
+<body>
+	
+<div class="container">
+	<form id="survey-form" action="{% url 'Deploy_9' %}"  method="POST" class="login__form">
+		{% csrf_token %}
+		<h1 class="login__title">
+			<span style="color: rgb(161, 0, 0);">CARDIOLOGY</span> Prediction Model
+		</h1>
+
+		<div class="login__inputs">
+			<!-- Age -->
+			<div class="form-group">
+				<label class="login__label">Age</label>
+				<input type="number" placeholder="Enter your Age" name="Age" required class="login__input">
+			</div>
+
+			<!-- Gender -->
+			<div class="form-group">
+				<label class="login__label">Gender</label>
+				<select name="Gender" required class="login__input">
+					<option value="" disabled selected>Select Gender</option>
+					<option value="0">Female</option>
+					<option value="1">Male</option>
+				</select>
+			</div>
+
+			<!-- BMI -->
+			<div class="form-group">
+				<label class="login__label">BMI</label>
+				<input type="number" placeholder="Enter BMI" name="BMI" required class="login__input">
+			</div>
+
+			<!-- Smoking -->
+			<div class="form-group">
+				<label class="login__label">Smoking Status</label>
+				<select name="Smoking_Status" required class="login__input">
+					<option value="" disabled selected>Select</option>
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</select>
+			</div>
+
+			<!-- COVID Severity -->
+			<div class="form-group">
+				<label class="login__label">COVID Severity</label>
+				<select name="COVID_Severity" required class="login__input">
+					<option value="" disabled selected>Select</option>
+					<option value="0">Mild</option>
+					<option value="1">Moderate</option>
+					<option value="2">Severe</option>
+				</select>
+			</div>
+
+			<!-- SpO2 -->
+			<div class="form-group">
+				<label class="login__label">SpO2</label>
+				<input type="number" placeholder="Enter your SpO2" name="SpO2" required class="login__input">
+			</div>
+
+			<!-- Blood Pressure -->
+			<div class="form-group">
+				<label class="login__label">Blood Pressure</label>
+				<input type="number" placeholder="Enter your Blood Pressure" name="Blood_Pressure" required class="login__input">
+			</div>
+
+			<!-- Heart Rate -->
+			<div class="form-group">
+				<label class="login__label">Heart Rate</label>
+				<input type="number" placeholder="Enter your Heart Rate" name="Heart_Rate" required class="login__input">
+			</div>
+
+			<!-- ECG -->
+			<div class="form-group">
+				<label class="login__label">ECG Result</label>
+				<select name="ECG_Result" required class="login__input">
+					<option value="" disabled selected>Select</option>
+					<option value="0">Abnormal</option>
+					<option value="1">Normal</option>
+				</select>
+			</div>
+
+			<!-- Troponin -->
+			<div class="form-group">
+				<label class="login__label">Troponin Level</label>
+				<input type="number" placeholder="Enter Troponin Level" name="Troponin_Level" required class="login__input">
+			</div>
+
+			<!-- D-Dimer -->
+			<div class="form-group">
+				<label class="login__label">D Dimer</label>
+				<input type="number" placeholder="Enter D Dimer" name="D_Dimer" required class="login__input">
+			</div>
+
+			<!-- CRP -->
+			<div class="form-group">
+				<label class="login__label">CRP</label>
+				<input type="number" placeholder="Enter CRP" name="CRP" required class="login__input">
+			</div>
+
+			<!-- Blood Sugar -->
+			<div class="form-group">
+				<label class="login__label">Blood Sugar</label>
+				<input type="number" placeholder="Enter Blood Sugar" name="Blood_Sugar" required class="login__input">
+			</div>
+
+			<!-- Cholesterol -->
+			<div class="form-group">
+				<label class="login__label">Cholesterol Level</label>
+				<input type="number" placeholder="Enter Cholesterol Level" name="Cholesterol_Level" required class="login__input">
+			</div>
+
+			<!-- Hypertension -->
+			<div class="form-group">
+				<label class="login__label">Hypertension</label>
+				<select name="Hypertension" required class="login__input">
+					<option value="" disabled selected>Select</option>
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</select>
+			</div>
+
+			<!-- Diabetes -->
+			<div class="form-group">
+				<label class="login__label">Diabetes</label>
+				<select name="Diabetes" required class="login__input">
+					<option value="" disabled selected>Select</option>
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</select>
+			</div>
+
+			<!-- Vaccine -->
+			<div class="form-group">
+				<label class="login__label">Vaccine Given</label>
+				<select name="Vaccine_Given" required class="login__input">
+					<option value="" disabled selected>Select</option>
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</select>
+			</div>
+		</div>
+
+		<button type="submit" class="login__button">Submit</button>
+	</form>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+	const form = document.querySelector('.login__form');
+
+	form.addEventListener('submit', function(event) {
+		const inputs = document.querySelectorAll('.login__input');
+		let valid = true;
+
+		inputs.forEach(function(input) {
+			if (input.value === '' || input.value === 'Select') {
+				input.style.borderColor = 'red';
+				valid = false;
+			} else {
+				input.style.borderColor = '#ccc';
+			}
+		});
+
+		if (!valid) {
+			event.preventDefault();
+			alert('⚠️ Please fill in all fields correctly.');
+		}
+	});
+});
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

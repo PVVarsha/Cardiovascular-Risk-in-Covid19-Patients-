@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Failure Information and Friend Code Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-icons.css" rel="stylesheet">
+    <link href="/static/css/templatemo-kind-heart-charity.css" rel="stylesheet">
+   
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+        
+        .container {
+            margin-top: 20px;
+        }
+        
+        .info-section {
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .info-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* High Risk Styling */
+        .high-risk {
+            background: linear-gradient(135deg, #ffeaea 0%, #ffd6d6 100%);
+            border-left: 8px solid #dc3545;
+            color: #721c24;
+        }
+        
+        .high-risk h2, .high-risk h4 {
+            color: #dc3545;
+            font-weight: 700;
+        }
+        
+        .high-risk .table {
+            background: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid #dc3545;
+        }
+        
+        .high-risk .thead-dark {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            color: white;
+        }
+        
+        .high-risk ul {
+            background: #fff5f5;
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid #f8d7da;
+        }
+        
+        .high-risk ul li {
+            color: #721c24;
+            padding: 10px 0;
+            border-bottom: 1px solid #f1aeb5;
+        }
+        
+        .high-risk ul li:last-child {
+            border-bottom: none;
+        }
+        
+        .high-risk .fas, .high-risk .bi {
+            color: #dc3545;
+        }
+        
+        /* Medium Risk Styling */
+        .medium-risk {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border-left: 8px solid #fd7e14;
+            color: #856404;
+        }
+        
+        .medium-risk h2, .medium-risk h4 {
+            color: #e67e22;
+            font-weight: 700;
+        }
+        
+        .medium-risk .table {
+            background: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid #fd7e14;
+        }
+        
+        .medium-risk .thead-dark {
+            background: linear-gradient(135deg, #fd7e14 0%, #e67e22 100%);
+            color: white;
+        }
+        
+        .medium-risk ul {
+            background: #fffdf4;
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid #ffeaa7;
+        }
+        
+        .medium-risk ul li {
+            color: #856404;
+            padding: 10px 0;
+            border-bottom: 1px solid #ffd966;
+        }
+        
+        .medium-risk ul li:last-child {
+            border-bottom: none;
+        }
+        
+        .medium-risk .fas, .medium-risk .bi {
+            color: #fd7e14;
+        }
+        
+        /* Low Risk Styling */
+        .low-risk {
+            background: linear-gradient(135deg, #e8f5e8 0%, #d4edda 100%);
+            border-left: 8px solid #28a745;
+            color: #155724;
+        }
+        
+        .low-risk h2, .low-risk h4 {
+            color: #28a745;
+            font-weight: 700;
+        }
+        
+        .low-risk .table {
+            background: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid #28a745;
+        }
+        
+        .low-risk .thead-dark {
+            background: linear-gradient(135deg, #28a745 0%, #218838 100%);
+            color: white;
+        }
+        
+        .low-risk ul {
+            background: #f8fff8;
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .low-risk ul li {
+            color: #155724;
+            padding: 10px 0;
+            border-bottom: 1px solid #b1dfbb;
+        }
+        
+        .low-risk ul li:last-child {
+            border-bottom: none;
+        }
+        
+        .low-risk .fas, .low-risk .bi {
+            color: #28a745;
+        }
+        
+        /* Common Styling */
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 700;
+            font-size: 2.5rem;
+        }
+        
+        h4 {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .table {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .table th {
+            font-weight: 600;
+            padding: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .table td {
+            padding: 20px;
+            vertical-align: top;
+        }
+        
+        ul {
+            padding-left: 0;
+            margin-bottom: 0;
+        }
+        
+        ul li {
+            margin-bottom: 12px;
+            list-style: none;
+            padding-left: 0;
+            line-height: 1.6;
+        }
+        
+        ul li i {
+            margin-right: 12px;
+            font-size: 1.1em;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .risk-header {
+            text-align: center;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .high-risk .risk-header {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            color: white;
+            border: 2px solid #dc3545;
+        }
+        
+        .medium-risk .risk-header {
+            background: linear-gradient(135deg, #fd7e14 0%, #e67e22 100%);
+            color: white;
+            border: 2px solid #fd7e14;
+        }
+        
+        .low-risk .risk-header {
+            background: linear-gradient(135deg, #28a745 0%, #218838 100%);
+            color: white;
+            border: 2px solid #28a745;
+        }
+        
+        .risk-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .alert-level {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* Text readability improvements */
+        strong {
+            color: inherit;
+            font-weight: 700;
+        }
+        
+        .table td:first-child {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        /* Responsive improvements */
+        @media (max-width: 768px) {
+            .info-section {
+                padding: 20px;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .table {
+                font-size: 0.9rem;
+            }
+            
+            .table td, .table th {
+                padding: 12px 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light shadow-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="/static/images/logo.png" class="logo img-fluid" alt="Kind Heart Charity">
+                <span>
+                    AI CARDIOLOGIST 
+                    <small>using ml & dl</small>
+                </span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="/">Home</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                       <a class="nav-link" href="{% url 'users-profile' %}">Profile </a>
+                   </li>
+                   <li class="nav-item">
+                    <a class="nav-link" href="{% url 'Deploy_9' %}">ML MODEL</a>
+                    </li>
+                    <li class="nav-item">
+                       <a class="nav-link" href="{% url 'Deploy_10' %}">DL MODEL</a>
+                   </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link click-scroll dropdown-toggle" href="#section_5" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Report</a>
+                        <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                            <li><a class="dropdown-item" href="{% url 'report' %}">Basic report </a></li>
+                            <li><a class="dropdown-item" href="{% url 'matrix' %}">Metrix report</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                       <a class="nav-link click-scroll dropdown-toggle" href="" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Database</a>
+                       <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                           <li><a class="dropdown-item" href="{% url 'patient_list' %}">ML DB </a></li>
+                           <li><a class="dropdown-item" href="{% url 'database' %}">DL DB</a></li>
+                       </ul>
+                   </li>
+                    <li class="nav-item ms-3">
+                        <a class="nav-link custom-btn custom-border-btn btn" href="{% url 'logout_view' %}">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item ms-3">
+                       <a class="nav-link custom-btn custom-border-btn btn" href="{% url 'login' %}">LogIN</a>
+                   </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" id="home">
+        {% if prediction_text == 'High Risk' %}
+        <div class="info-section high-risk">
+            <div class="risk-header">
+                <i class="fas fa-exclamation-triangle risk-icon"></i>
+                <div class="alert-level">HIGH RISK LEVEL</div>
+                <div class="subtitle">Immediate Attention Required - High Chance of Heart Attack</div>
+            </div>
+            
+            <table class="table table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Category</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><i class="bi bi-chat-heart"></i> Critical Risk Factors</td>
+                        <td>
+                            <ul>
+                                <li><i class="fas fa-heartbeat"></i> <strong>Severe Coronary Artery Disease:</strong> Significantly narrowed arteries severely restricting blood flow.</li>
+                                
+                                <li><i class="fas fa-heart"></i> <strong>Previous Heart Damage:</strong> History of major heart attacks or cardiac events.</li>
+                                <li><i class="fas fa-procedures"></i> <strong>Advanced Cardiomyopathy:</strong> Severe heart muscle disease requiring immediate intervention.</li>
+                                <li><i class="fas fa-shield-alt"></i> <strong>Critical Valve Disease:</strong> Severe valve defects causing significant strain.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Emergency Actions Required</td>
+                        <td>
+                            <ul>
+                                <li><strong>Immediate Medical Consultation:</strong> Seek emergency cardiac care immediately.</li>
+                                <li><strong>Medication Adherence:</strong> Strict compliance with all prescribed cardiac medications.</li>
+                                <li><strong>Lifestyle Overhaul:</strong> Complete transformation of diet and activity levels.</li>
+                                <li><strong>Continuous Monitoring:</strong> Regular ECG, blood pressure, and cholesterol checks.</li>
+                                <li><strong>Emergency Plan:</strong> Have a clear emergency response plan for cardiac events.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Intensive Management</td>
+                        <td>
+                            <ul>
+                                <li><strong>Advanced Medications:</strong> Multiple cardiac medications under specialist supervision.</li>
+                                <li><strong>Surgical Evaluation:</strong> Consideration for bypass surgery or stents.</li>
+                                <li><strong>Strict Diet Control:</strong> Very low sodium, low fat, cardiac-specific diet.</li>
+                                <li><strong>Supervised Exercise:</strong> Only under cardiac rehabilitation supervision.</li>
+                                <li><strong>Daily Symptom Tracking:</strong> Monitor for chest pain, shortness of breath, swelling.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        {% elif prediction_text == 'Medium Risk' %}
+        <div class="info-section medium-risk">
+            <div class="risk-header">
+                <i class="fas fa-exclamation-circle risk-icon"></i>
+                <div class="alert-level">MEDIUM RISK LEVEL</div>
+                <div class="subtitle">Moderate Risk - Requires Careful Management</div>
+            </div>
+            
+            <table class="table table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Category</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><i class="bi bi-chat-heart"></i> Moderate Risk Factors</td>
+                        <td>
+                            <ul>
+                                <li><i class="fas fa-heartbeat"></i> <strong>Moderate Coronary Artery Disease:</strong> Some arterial narrowing affecting blood flow.</li>
+                              
+                                <li><i class="fas fa-heart"></i> <strong>Minor Heart Events:</strong> History of minor cardiac issues.</li>
+                                <li><i class="fas fa-procedures"></i> <strong>Early Cardiomyopathy:</strong> Developing heart muscle concerns.</li>
+                                <li><i class="fas fa-shield-alt"></i> <strong>Moderate Valve Issues:</strong> Valve problems requiring monitoring.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Prevention and Management</td>
+                        <td>
+                            <ul>
+                                <li><strong>Regular Medical Follow-ups:</strong> Quarterly check-ups with cardiologist.</li>
+                                <li><strong>Medication Management:</strong> Consistent use of prescribed medications.</li>
+                                <li><strong>Lifestyle Modifications:</strong> Significant improvements in diet and exercise.</li>
+                                <li><strong>Risk Factor Control:</strong> Manage blood pressure, cholesterol, and diabetes.</li>
+                                <li><strong>Stress Management:</strong> Implement regular stress-reduction techniques.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Moderate Exercise Program</td>
+                        <td>
+                            <ul>
+                                <li><strong>Brisk Walking:</strong> 30 minutes daily, 5 days a week.</li>
+                                <li><strong>Cycling:</strong> Stationary or outdoor cycling 3-4 times weekly.</li>
+                                <li><strong>Swimming:</strong> Low-impact water exercises 2-3 times weekly.</li>
+                                <li><strong>Light Strength Training:</strong> Under professional guidance.</li>
+                                <li><strong>Regular Monitoring:</strong> Track heart rate and symptoms during exercise.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        {% elif prediction_text == 'Low Risk' %}
+        <div class="info-section low-risk">
+            <div class="risk-header">
+                <i class="fas fa-check-circle risk-icon"></i>
+                <div class="alert-level">LOW RISK LEVEL</div>
+                <div class="subtitle">Good Heart Health - Maintain Healthy Lifestyle</div>
+            </div>
+            
+            <table class="table table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Category</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><i class="bi bi-chat-heart"></i> Current Health Status</td>
+                        <td>
+                            <ul>
+                                <li><i class="fas fa-heartbeat"></i> <strong>Healthy Coronary Arteries:</strong> Minimal or no arterial narrowing.</li>
+                                <li><i class="fas fa-tachometer-alt"></i> <strong>Normal Blood Pressure:</strong> Within healthy range.</li>
+                                <li><i class="fas fa-heart"></i> <strong>Strong Heart Muscle:</strong> Good cardiac function.</li>
+                                <li><i class="fas fa-procedures"></i> <strong>No Significant History:</strong> Minimal cardiac risk factors.</li>
+                                <li><i class="fas fa-shield-alt"></i> <strong>Healthy Lifestyle:</strong> Good diet and exercise habits.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Maintenance and Prevention</td>
+                        <td>
+                            <ul>
+                                <li><strong>Annual Check-ups:</strong> Regular heart health assessments.</li>
+                                <li><strong>Healthy Diet:</strong> Continue balanced, heart-healthy eating.</li>
+                                <li><strong>Regular Exercise:</strong> Maintain current activity levels.</li>
+                                <li><strong>Weight Management:</strong> Keep BMI in healthy range.</li>
+                                <li><strong>Stress Control:</strong> Continue stress management practices.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Optimal Exercise Routine</td>
+                        <td>
+                            <ul>
+                                <li><strong>Aerobic Exercise:</strong> 150 minutes moderate or 75 minutes vigorous weekly.</li>
+                                <li><strong>Strength Training:</strong> 2-3 times weekly for muscle health.</li>
+                                <li><strong>Flexibility Exercises:</strong> Yoga or stretching for overall wellness.</li>
+                                <li><strong>Sports and Recreation:</strong> Enjoyable physical activities.</li>
+                                <li><strong>Active Lifestyle:</strong> Incorporate movement into daily routine.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Long-term Heart Health</td>
+                        <td>
+                            <ul>
+                                <li><strong>Continue Healthy Habits:</strong> Maintain current lifestyle choices.</li>
+                                <li><strong>Regular Monitoring:</strong> Annual cholesterol and blood pressure checks.</li>
+                                <li><strong>Preventive Care:</strong> Stay up-to-date with health screenings.</li>
+                                <li><strong>Education:</strong> Stay informed about heart health advancements.</li>
+                                <li><strong>Community Engagement:</strong> Participate in heart health activities.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+<!-- JAVASCRIPT FILES -->
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/jquery.sticky.js"></script>
+<script src="/static/js/click-scroll.js"></script>
+<script src="/static/js/counter.js"></script>
+<script src="/static/js/custom.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</html>
